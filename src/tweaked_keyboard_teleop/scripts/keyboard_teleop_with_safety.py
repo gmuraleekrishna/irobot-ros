@@ -5,8 +5,8 @@ from geometry_msgs.msg import Twist
 import sys, select, termios, tty
 
 DIRECTION_MAPPING = {
-    'j': -1, # left
-    'l': 1, # right
+    'j': 1, # left
+    'l': -1, # right
 }
 
 SPEED_MAPPING = {
@@ -14,16 +14,17 @@ SPEED_MAPPING = {
     'm': -1, # decrease speed
 }
 
+LINEAR_SPEED_FACTOR = 0.1 # increase linear speed by this factor
+ANGULAR_SPEED_FACTOR = 0.2 # increase linear speed by this factor
+
 class KeyboardTeleop():
     def __init__(self):
         rospy.init_node('keyboard_teleop', anonymous=False)
         rospy.on_shutdown(self.on_shutdown)
         self.cmd_pub = rospy.Publisher('cmd_vel_mux/input/navi', Twist, queue_size=5) # navigation message publisher
         rospy.Subscriber('mobile_base/sensors/core', TurtlebotSensorState, self.on_sensor_event) # subsriber to all sensors in 'iRobot create'
-        self.current_linear_speed = 0.5 
+        self.current_linear_speed = 0.1 
         self.should_stop = False # a flag to represent if robot should stop
-        self.SPEED_FACTOR = 0.5 # increase linear speed by this factor
-        
         self.move_cmd = Twist() # new message
     
     def on_shutdown(self): # ROS automatically calls this function if it shutsdown or is killed
@@ -32,21 +33,21 @@ class KeyboardTeleop():
         rospy.sleep(1)
 
     def on_sensor_event(self, data): # callback for all sensors (see line 22)
-        if(data.cliff_left or data.cliff_right or data.cliff_front_right or data.cliff_front_left or data.bumps_wheeldrops):
+        if(data.cliff_left or data.cliff_right or data.cliff_front_right or data.cliff_front_left or data.bumps_wheeldrops > 0):
             print('********* CLiff or Bump *******************')
             self.should_stop = True # should stop if bumped or about to be cliffed
         else:
             self.should_stop = False
 
     def nudge(self, direction): 
-        self.move_cmd.angular.x = direction * self.SPEED_FACTOR # just change direction and speed  of angular x 
+        self.move_cmd.angular.z = direction * ANGULAR_SPEED_FACTOR # just change direction and speed  of angular x 
         self.move_cmd.angular.y = 0
-        self.move_cmd.angular.z = 0
+        self.move_cmd.angular.x = 0
         self.cmd_pub.publish(self.move_cmd) # send turn command to robot
-        self.move_cmd.angular.x = 0 # set angular value back to zero to prevent continuous turning 
+        self.move_cmd.angular.z = 0 # set angular value back to zero to prevent continuous turning 
     
     def change_speed(self, multipler): # multiplier denotes increase (+1) or decrease (-1)
-        self.current_linear_speed = self.current_linear_speed + (multipler * self.SPEED_FACTOR) # increase or decrease linear speed x 
+        self.current_linear_speed = self.current_linear_speed + (multipler * LINEAR_SPEED_FACTOR) # increase or decrease linear speed x 
     
     def move_forward(self):
         self.move_cmd.linear.x = self.current_linear_speed # set current speed 
