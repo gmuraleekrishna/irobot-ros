@@ -62,7 +62,7 @@ class KeyboardTeleop():
         self.cmd_pub.publish(self.move_cmd)
 
 def getKey(): # reads key press from the terminal
-        # From ROS keyboard_teleop_key package
+        # From ROS turtlebot_teleop package
         settings = termios.tcgetattr(sys.stdin)
         tty.setraw(sys.stdin.fileno())
         rlist, _, _ = select.select([sys.stdin], [], [], 0.2)
