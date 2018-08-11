@@ -145,7 +145,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(tweaked_keyboard_teleop_EXPORTED_TARGETS "tweaked_keyboard_teleop_generate_messages_cpp;tweaked_keyboard_teleop_generate_messages_lisp;tweaked_keyboard_teleop_generate_messages_py")
+set(tweaked_keyboard_teleop_EXPORTED_TARGETS "tweaked_keyboard_teleop_generate_messages_cpp;tweaked_keyboard_teleop_generate_messages_eus;tweaked_keyboard_teleop_generate_messages_lisp;tweaked_keyboard_teleop_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${tweaked_keyboard_teleop_EXPORTED_TARGETS})
   if(NOT TARGET ${t})

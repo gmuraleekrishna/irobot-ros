@@ -260,6 +260,9 @@ cpp_common_DIR:PATH=/opt/ros/indigo/share/cpp_common/cmake
 //The directory containing a CMake configuration file for gencpp.
 gencpp_DIR:PATH=/opt/ros/indigo/share/gencpp/cmake
 
+//The directory containing a CMake configuration file for geneus.
+geneus_DIR:PATH=/opt/ros/indigo/share/geneus/cmake
+
 //The directory containing a CMake configuration file for genlisp.
 genlisp_DIR:PATH=/opt/ros/indigo/share/genlisp/cmake
 
@@ -293,6 +296,12 @@ gtest_force_shared_crt:BOOL=OFF
 
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
+
+//Value Computed by CMake
+keyboard_teleop_BINARY_DIR:STATIC=/home/bot/catkin_ws/build/keyboard_teleop
+
+//Value Computed by CMake
+keyboard_teleop_SOURCE_DIR:STATIC=/home/bot/catkin_ws/src/keyboard_teleop
 
 //Path to a library.
 lib:FILEPATH=/opt/ros/indigo/lib/libxmlrpcpp.so
@@ -438,7 +447,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=3
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=4
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
