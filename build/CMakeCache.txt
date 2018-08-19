@@ -312,6 +312,12 @@ message_generation_DIR:PATH=/opt/ros/indigo/share/message_generation/cmake
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/indigo/share/message_runtime/cmake
 
+//Value Computed by CMake
+move_fixed_path_BINARY_DIR:STATIC=/home/bot/catkin_ws/build/move_fixed_path
+
+//Value Computed by CMake
+move_fixed_path_SOURCE_DIR:STATIC=/home/bot/catkin_ws/src/move_fixed_path
+
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/indigo/share/rosconsole/cmake
 
@@ -447,7 +453,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=4
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=5
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

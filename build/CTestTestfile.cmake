@@ -6,4 +6,5 @@
 # testing this directory and lists subdirectories to be tested as well.
 SUBDIRS(gtest)
 SUBDIRS(keyboard_teleop)
+SUBDIRS(move_fixed_path)
 SUBDIRS(tweaked_keyboard_teleop)

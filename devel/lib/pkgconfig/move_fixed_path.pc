@@ -1,0 +1,8 @@
+prefix=/home/bot/catkin_ws/devel
+
+Name: move_fixed_path
+Description: Description of move_fixed_path
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/bot/catkin_ws/devel/lib 
+Requires: 

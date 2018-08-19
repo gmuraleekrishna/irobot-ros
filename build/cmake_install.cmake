@@ -118,6 +118,7 @@ IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   INCLUDE("/home/bot/catkin_ws/build/gtest/cmake_install.cmake")
   INCLUDE("/home/bot/catkin_ws/build/keyboard_teleop/cmake_install.cmake")
+  INCLUDE("/home/bot/catkin_ws/build/move_fixed_path/cmake_install.cmake")
   INCLUDE("/home/bot/catkin_ws/build/tweaked_keyboard_teleop/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
